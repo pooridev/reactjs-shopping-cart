@@ -1,9 +1,11 @@
 import './App.css';
-import Products from './components/Products/Products';
+
+import { Products, Navbar } from './components/index';
 
 function App() {
   return (
     <div className='App'>
+      <Navbar />
       <Products />
     </div>
   );
