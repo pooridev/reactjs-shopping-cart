@@ -2,13 +2,11 @@ import Logo from '../../assets/commerce.png';
 import {
   AppBar,
   Badge,
-  Menu,
-  MenuItem,
   Typography,
   Toolbar,
   IconButton
 } from '@material-ui/core';
-import { AddShoppingCart, ShoppingCart } from '@material-ui/icons';
+import { ShoppingCart } from '@material-ui/icons';
 import useStyles from './styles';
 
 const Navbar = () => {
