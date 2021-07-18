@@ -9,7 +9,7 @@ import {
 import { ShoppingCart } from '@material-ui/icons';
 import useStyles from './styles';
 
-const Navbar = () => {
+const Navbar = ({ totalItems }) => {
   const classes = useStyles();
 
   return (
@@ -30,7 +30,7 @@ const Navbar = () => {
         </Typography>
         <div className={classes.button}>
           <IconButton>
-            <Badge color='secondary' badgeContent={2}>
+            <Badge color='secondary' badgeContent={totalItems}>
               <ShoppingCart />
             </Badge>
           </IconButton>

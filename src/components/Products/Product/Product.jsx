@@ -10,9 +10,9 @@ import {
 import { AddShoppingCart } from '@material-ui/icons';
 import useStyles from './styles';
 
-function Product({ product }) {
+function Product({ product, onAdd }) {
   const classes = useStyles();
-  console.log(product);
+  console.log(product)
   return (
     <Card className={classes.root}>
       <CardMedia
@@ -26,7 +26,7 @@ function Product({ product }) {
             {product.name}
           </Typography>
           <Typography variant='h5'>
-            {product.price.formatted_with_code}
+            {product.price.formatted_with_symbol}
           </Typography>
         </div>
         <Typography
@@ -36,7 +36,7 @@ function Product({ product }) {
         />
       </CardContent>
       <CardActions className={classes.cardActions}>
-        <IconButton aria-label='Add To Cart'>
+        <IconButton onClick={() => onAdd(product.id, 1)} aria-label='Add To Cart'>
           <AddShoppingCart />
         </IconButton>
       </CardActions>
