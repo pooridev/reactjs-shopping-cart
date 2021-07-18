@@ -16,7 +16,7 @@ function Products({ products, onAddToProduct }) {
         style={{ margin: '0', maxWidth: '100%' }}>
         {products.map(product => (
           <Grid item key={product.id} xs={12} sm={6} md={4} lg={3}>
-            <Product product={product} onAdd={onAddToProduct} />
+            <Product product={product} onAddToProduct={onAddToProduct} />
           </Grid>
         ))}
       </Grid>

@@ -8,9 +8,24 @@ import {
 } from '@material-ui/core';
 import { ShoppingCart } from '@material-ui/icons';
 import useStyles from './styles';
+import { Link, useLocation } from 'react-router-dom';
 
 const Navbar = ({ totalItems }) => {
   const classes = useStyles();
+  const location = useLocation();
+  let cartLink = null;
+
+  if (location.pathname === '/') {
+    cartLink = (
+      <div className={classes.button}>
+        <IconButton component={Link} to='/cart'>
+          <Badge color='secondary' badgeContent={totalItems}>
+            <ShoppingCart />
+          </Badge>
+        </IconButton>
+      </div>
+    );
+  }
 
   return (
     <AppBar
@@ -19,22 +34,16 @@ const Navbar = ({ totalItems }) => {
       className={classes.appBar}
       color='inherit'>
       <Toolbar>
-        <Typography className={classes.title}>
+        <Typography component={Link} to='/' className={classes.title}>
           <img
             src={Logo}
             alt='Mine Commerce'
             height='25px'
             className={classes.image}
           />
-          Reactjs E-commerce
+          Shopping Cart
         </Typography>
-        <div className={classes.button}>
-          <IconButton>
-            <Badge color='secondary' badgeContent={totalItems}>
-              <ShoppingCart />
-            </Badge>
-          </IconButton>
-        </div>
+      {cartLink}
       </Toolbar>
     </AppBar>
   );
