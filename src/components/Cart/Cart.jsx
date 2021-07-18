@@ -32,7 +32,7 @@ const Cart = props => {
       </Grid>
       <div className={classes.cardDetails}>
         <Typography className={classes.subtotal} variant='h5' gutterBottom>
-          Subtotal: {cart.subtotal.formatted_with_symbol}
+          Total price: {cart.subtotal.formatted_with_symbol}
         </Typography>
         <div>
           <Button
@@ -40,7 +40,7 @@ const Cart = props => {
             size='large'
             type='button'
             variant='contained'
-            color='secondary'
+            color='primary'
             onClick={handleEmptyCart}>
             Empty Cart
           </Button>
