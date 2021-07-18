@@ -23,8 +23,8 @@ const CartItem = ({ item, onRemoveFromCart, onUpdateCartQty }) => {
         className={classes.media}
       />
       <CardContent className={classes.cardContent}>
-        <Typography variant='h4'>{item.name}</Typography>
-        <Typography variant='h5'>
+        <Typography className={classes.itemName} variant='h6'>{item.name}</Typography>
+        <Typography variant='h6'>
           {item.line_total.formatted_with_symbol}
         </Typography>
       </CardContent>

@@ -21,7 +21,7 @@ const Cart = props => {
     <>
       <Grid container spacing={3}>
         {cart.line_items.map(item => (
-          <Grid item xs={12} sm={4} key={item.id}>
+          <Grid item xs={12} lg={4} sm={6} key={item.id}>
             <CartItem
               item={item}
               onUpdateCartQty={handleUpdateCartQty}
@@ -31,7 +31,7 @@ const Cart = props => {
         ))}
       </Grid>
       <div className={classes.cardDetails}>
-        <Typography variant='h4'>
+        <Typography className={classes.subtotal} variant='h5' gutterBottom>
           Subtotal: {cart.subtotal.formatted_with_symbol}
         </Typography>
         <div>
