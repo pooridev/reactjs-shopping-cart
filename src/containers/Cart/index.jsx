@@ -1,11 +1,22 @@
 import { Container, Typography, Grid, Button } from '@material-ui/core';
-import useStyles from './styles';
-import CartItem from './CartItem/CartItem';
+import CartItem from '../../components/CartItem';
 import { Link } from 'react-router-dom';
+import { useCart } from './../../providers/cart-context';
+import { useEffect } from 'react';
 
-const Cart = props => {
-  const { cart, handleUpdateCartQty, handleRemoveFromCart, handleEmptyCart } =
-    props;
+import useStyles from './styles';
+
+const Cart = () => {
+  const {
+    cart,
+    fetchCart,
+    handleUpdateCartQty,
+    handleRemoveFromCart,
+    handleEmptyCart
+  } = useCart();
+
+  useEffect(() => fetchCart(), [fetchCart]);
+
   const classes = useStyles();
 
   const EmptyCart = () => (

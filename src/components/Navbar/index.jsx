@@ -9,9 +9,16 @@ import {
 import { ShoppingCart } from '@material-ui/icons';
 import useStyles from './styles';
 import { Link, useLocation } from 'react-router-dom';
+import { useCart } from './../../providers/cart-context';
+import { useEffect } from 'react';
 
-const Navbar = ({ totalItems }) => {
+const Navbar = () => {
+  const { fetchCart, cart } = useCart();
+
   const classes = useStyles();
+
+  useEffect(() => fetchCart(), [fetchCart]);
+
   const location = useLocation();
   let cartLink = null;
 
@@ -19,7 +26,7 @@ const Navbar = ({ totalItems }) => {
     cartLink = (
       <div className={classes.button}>
         <IconButton component={Link} to='/cart'>
-          <Badge color='secondary' badgeContent={totalItems}>
+          <Badge color='secondary' badgeContent={cart.total_items}>
             <ShoppingCart />
           </Badge>
         </IconButton>
@@ -43,7 +50,7 @@ const Navbar = ({ totalItems }) => {
           />
           Shopping Cart
         </Typography>
-      {cartLink}
+        {cartLink}
       </Toolbar>
     </AppBar>
   );

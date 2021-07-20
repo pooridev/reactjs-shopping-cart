@@ -8,11 +8,13 @@ import {
 } from '@material-ui/core';
 
 import { AddShoppingCart } from '@material-ui/icons';
+import { useCart } from '../../providers/cart-context';
 import useStyles from './styles';
 
-function Product({ product, onAddToProduct }) {
-  console.log(onAddToProduct)
+function Product({ product }) {
+  const { handleAddToCart } = useCart();
   const classes = useStyles();
+  
   return (
     <Card className={classes.root}>
       <CardMedia
@@ -36,7 +38,9 @@ function Product({ product, onAddToProduct }) {
         />
       </CardContent>
       <CardActions className={classes.cardActions}>
-        <IconButton onClick={() => onAddToProduct(product.id, 1)} aria-label='Add To Cart'>
+        <IconButton
+          onClick={() => handleAddToCart(product.id, 1)}
+          aria-label='Add To Cart'>
           <AddShoppingCart />
         </IconButton>
       </CardActions>
