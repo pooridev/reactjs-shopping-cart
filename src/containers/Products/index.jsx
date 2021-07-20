@@ -1,5 +1,4 @@
 import { Grid } from '@material-ui/core';
-import { useEffect } from 'react';
 import Product from '../../components/Product';
 import useStyles from './styles';
 import { useProducts } from './../../providers/products-context';
@@ -7,8 +6,8 @@ import { useProducts } from './../../providers/products-context';
 function Products({ onAddToProduct }) {
   const { products } = useProducts();
 
-
   const classes = useStyles();
+  
   return (
     <>
       <div className={classes.toolbar} />
