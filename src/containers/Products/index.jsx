@@ -1,20 +1,12 @@
 import { Grid } from '@material-ui/core';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import Product from '../../components/Product';
-import { commerce } from '../../lib/commerce';
 import useStyles from './styles';
+import { useProducts } from './../../providers/products-context';
 
 function Products({ onAddToProduct }) {
-  const [products, setProducts] = useState([]);
+  const { products } = useProducts();
 
-  const fetchProducts = async () => {
-    const { data } = await commerce.products.list();
-    setProducts(data);
-  };
-
-  useEffect(() => {
-    fetchProducts();
-  }, []);
 
   const classes = useStyles();
   return (
