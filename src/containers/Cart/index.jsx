@@ -3,6 +3,7 @@ import CartItem from '../../components/CartItem';
 import { Link } from 'react-router-dom';
 import { useCart } from './../../providers/cart-context';
 import { useEffect } from 'react';
+import Spinner from './../../components/Spinner/index';
 
 import useStyles from './styles';
 
@@ -26,7 +27,7 @@ const Cart = () => {
     </Typography>
   );
 
-  if (!cart.line_items) return 'Loading';
+  if (!cart.line_items) return <Spinner />;
 
   const FilledCart = () => (
     <>

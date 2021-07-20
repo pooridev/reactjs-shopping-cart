@@ -2,12 +2,20 @@ import { Grid } from '@material-ui/core';
 import Product from '../../components/Product';
 import useStyles from './styles';
 import { useProducts } from './../../providers/products-context';
+import Spinner from '../../components/Spinner';
+import { useEffect } from 'react';
 
-function Products({ onAddToProduct }) {
-  const { products } = useProducts();
+function Products() {
+  const { products, fetchProducts } = useProducts();
 
   const classes = useStyles();
-  
+
+  useEffect(() => {
+    fetchProducts();
+  }, [fetchProducts]);
+
+  if (!products) return <Spinner />;
+
   return (
     <>
       <div className={classes.toolbar} />
